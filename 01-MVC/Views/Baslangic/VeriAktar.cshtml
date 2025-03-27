@@ -1,0 +1,23 @@
+﻿@ViewData["mesaj"]
+@ViewBag.Message
+
+@* cevirmeden _01_MVC.Models.Urun;  *@
+@{
+    var urun1 = ViewData["urun"] as Urun;
+    var urun2 = ViewBag.Product as Urun;
+}
+<p>@urun1.UrunAdi</p>
+<p>@urun2.UrunAdi</p>
+
+@ViewBag.Product
+
+<table>
+@foreach (Urun urun in ViewBag.Urunler )
+{
+    <tr>
+        <td>@urun.UrunAdi</td>
+        <td>@urun.UrunID</td>
+        <td>@urun.Fiyat</td>
+    </tr>
+}
+</table>

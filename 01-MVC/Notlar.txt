@@ -1,0 +1,19 @@
+﻿../ControllerName/ActionName/id
+../Area/ControllerName/ActionName/id
+
+*** NSA; Bir controlerin varsayılan aksiyonu "Index"'dir
+
+Controller'dan View'e Veri Aktarma Yontemleri
+1-ViewData
+2-ViewBag **
+3-TempData
+4-Model **********
+5-ViewModel *****
+
+
+View'den Controllera Veri Aktarma
+1-Query String ****
+2-Request Form
+3-IFormCollection
+4-Parametre *******
+5-Model ************

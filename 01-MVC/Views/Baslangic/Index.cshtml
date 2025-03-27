@@ -1,0 +1,15 @@
+﻿@model Urun;
+<h1>Merhaba MVC Core</h1>
+
+@{
+    //C# kodu yazilabilir.
+}
+
+@* Home => Index Yonlendirmesi *@
+@* 1- HTML Helper Ile *@
+
+@Html.ActionLink("Home","Index","Home",null,new {@class = "btn btn-primary"}) @*Browser bu girdiyi HTML'e cevirir.*@
+
+@* 2- Tag Helper Ile *@
+<a class="mavi" onclick="mesajGoster()" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+
