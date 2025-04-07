@@ -1,0 +1,50 @@
+﻿@model Urun
+
+
+
+<h1>Ürün Ekle</h1>
+
+<!-- Form başlıyor -->
+<form asp-action="UrunEkle" method="post" enctype="multipart/form-data">
+    <table class="table">
+        <tr>
+            <td><label asp-for = "UrunAdi"> </label></td>
+            <td><input asp-for = "UrunAdi" class="form-control" /></td>
+        </tr>
+
+        <tr>
+            <td><label asp-for="Fiyat"> </label></td>
+            <td><input asp-for="Fiyat" class="form-control" /></td>
+        </tr>
+
+        <tr>
+            <td><label asp-for="KategoriID"> </label></td>
+            <td>
+                <select asp-for="KategoriID" asp-items="@ViewBag.Kategoriler" class="form-control">
+
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Aciklama"> </label></td>
+            <td>
+                <textarea cols="60" rows="5" asp-for="Aciklama">
+
+                </textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td><label asp-for="Resim">Resim</label></td>
+            <td><input type="file" class="form-control" name="urunResmi" required /></td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <button type="submit" class="btn btn-primary">Ürünü Ekle</button>
+            </td>
+        </tr>
+
+    </table>
+</form>
+<!-- Form bitiyor -->

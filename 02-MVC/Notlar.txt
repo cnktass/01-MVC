@@ -1,0 +1,8 @@
+﻿********* EF CORE ILE MVC CORE KULLANIMI **********
+
+EF Core => Code First => Model First
+
+1-) Ilk olarak paketleri yukleyelim
+2-) Modelleri olustur
+3-) Nav. Propları belirle
+4-) Context sınıfını olustur

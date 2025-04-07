@@ -8,7 +8,7 @@ Controller'dan View'e Veri Aktarma Yontemleri
 2-ViewBag **
 3-TempData
 4-Model **********
-5-ViewModel *****
+5-ViewModel ***** ->Birden fazla model eklerken
 
 
 View'den Controllera Veri Aktarma
