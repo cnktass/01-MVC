@@ -3,6 +3,7 @@ using _02_MVCHoca.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace _02_MVCHoca.Controllers
 {
@@ -69,6 +70,56 @@ namespace _02_MVCHoca.Controllers
             var urun = _dbContex.Urunler.Include(u => u.Kategori).FirstOrDefault(u => u.UrunID == id);
             return View(urun);
         }
+
+        [HttpGet]
+        public IActionResult Sil(int id)
+        {
+            var urun = _dbContex.Urunler.Include(u => u.Kategori).FirstOrDefault(u => u.UrunID == id);
+            return View(urun);
+        }
+
+        [HttpPost]
+        public IActionResult Silme(int id)
+        {
+            var urun = _dbContex.Urunler.Include(u => u.Kategori).FirstOrDefault(u => u.UrunID == id);
+
+            _dbContex.Urunler.Remove(urun);
+            _dbContex.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult Guncelle(int id)
+        {
+            var urun = _dbContex.Urunler.Find(id);
+            ViewBag.Kategoriler = new SelectList(_dbContex.Kategoriler, "KategoriID", "KategoriAdi");
+            return View(urun);
+        }
+
+        //Update isleminde id'yi tutmadıgımız için guncelleme işleminde sürekli insert yapar
+        //Bunun için hidden olarak id göndermelisin
+        [HttpPost]
+        public IActionResult Guncelle(Urun urun, IFormFile? yeniResim)
+        {
+            if (yeniResim != null)
+            {
+                string guid = Guid.NewGuid().ToString();
+                string dosyaAdi = "wwwroot/Resimler/" + guid + "_" + yeniResim.FileName;
+
+                using (FileStream fs = new FileStream(dosyaAdi, FileMode.Create))
+                {
+                    yeniResim.CopyTo(fs);
+                }
+
+                urun.Resim = guid + "_" + yeniResim.FileName;
+            }
+
+            _dbContex.Urunler.Update(urun);
+            _dbContex.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
 
     }
 }

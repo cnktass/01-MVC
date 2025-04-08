@@ -27,5 +27,12 @@ namespace _01_MVC.Controllers
             return RedirectToAction("UrunSayfasi");
         }
 
+        [HttpGet]
+        public IActionResult Sil(int id)
+        {
+            var urun = urunListesi.FirstOrDefault(u => u.UrunID == id);
+            
+          
+        }
     }
 }

@@ -1,0 +1,35 @@
+﻿@model Urun
+
+<div class="alert alert-warning">
+    <strong>Ürünü Siliyorsun</strong>
+</div>
+
+<form asp-action="Silme" method="post" asp-route-id="@Model.UrunID" onclick="return confirm('Emin misiniz?')">
+    <table class="table">
+        <tr>
+            <th>Ürün Adı</th>
+            <td>@Model.UrunAdi</td>
+        </tr>
+        <tr>
+            <th>Fiyat</th>
+            <td>@Model.Fiyat</td>
+        </tr>
+        <tr>
+            <th>Resim</th>
+            <td>
+                <img src="~/Resimler/@Model.Resim" width="150" height="100" />
+            </td>
+        </tr>
+        <tr>
+            <th>Açıklama</th>
+            <td>@Model.Aciklama</td>
+        </tr>
+        <tr>
+            <th>Kategori</th>
+            <td>@Model.Kategori?.KategoriAdi</td>
+        </tr>
+    </table>
+
+    <button type="submit" class="btn btn-danger">Sil</button>
+    <a asp-action="Index" class="btn btn-secondary">İptal</a>
+</form>
