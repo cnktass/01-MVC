@@ -32,6 +32,7 @@
         <tr>
             <td><label asp-for="Resim">Resim</label></td>
             <td><input type="file" class="form-control" name="yeniResim" /></td>
+            <input type="hidden" asp-for="Resim" /> @* Eski resmi saklamak için *@
         </tr>
 
         <tr>

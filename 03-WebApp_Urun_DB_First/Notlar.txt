@@ -1,0 +1,1 @@
+﻿Code First => Database First Yaklasımı ile UrunDB sınıfının gerekli yapılarını olusturunuz

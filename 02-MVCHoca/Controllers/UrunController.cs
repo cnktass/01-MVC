@@ -1,5 +1,6 @@
 ﻿using _02_MVCHoca.Data;
 using _02_MVCHoca.Models;
+using _02_MVCHoca.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -103,23 +104,13 @@ namespace _02_MVCHoca.Controllers
         {
             if (yeniResim != null)
             {
-                string guid = Guid.NewGuid().ToString();
-                string dosyaAdi = "wwwroot/Resimler/" + guid + "_" + yeniResim.FileName;
+                urun.Resim = FileOperations.ResimYukle(yeniResim);
 
-                using (FileStream fs = new FileStream(dosyaAdi, FileMode.Create))
-                {
-                    yeniResim.CopyTo(fs);
-                }
-
-                urun.Resim = guid + "_" + yeniResim.FileName;
             }
-
             _dbContex.Urunler.Update(urun);
             _dbContex.SaveChanges();
 
             return RedirectToAction("Index");
         }
-
-
     }
 }
